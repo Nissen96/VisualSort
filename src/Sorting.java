@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
@@ -37,11 +38,29 @@ public class Sorting {
 
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
-        String[] slowSorters = {"insertion", "bubble", "selection", "cocktail", "gnome", "bead"};
+        String[] slowSorters = {
+                "insertion",
+                "bubble",
+                "selection",
+                "cocktail",
+                "gnome",
+                "bead"
+        };
         sort(mRnd, slowSorters);
 
         // Quick sorting algorithms
-        String[] quickSorters = {"mergetd", "mergebu", "quick", "heap", "count", "shell", "shelltokuda", "shellciura"};
+        String[] quickSorters = {
+                "mergetd",
+                "mergebu",
+                "quick",
+                "heap",
+                "count",
+                "radixlsd2",
+                "radixlsd10",
+                "shell",
+                "shelltokuda",
+                "shellciura"
+        };
         sort(xlRnd, quickSorters, 3);
 
         // Stupid sorting algorithms
@@ -78,7 +97,7 @@ public class Sorting {
             Thread.sleep(1000);
 
             // Sort array - not done in place since the same array is used for each sorter
-            sorter.sort(array, false);
+            sorter.sort(array);
             Thread.sleep(2000);
         }
     }
@@ -150,6 +169,22 @@ public class Sorting {
             case "quick":
             case "qck":
                 sorter = new QuickSort(delay);
+                break;
+            case "radix":
+            case "rdx":
+            case "radix2":
+            case "rdx2":
+            case "radixlsd":
+            case "rdxlsd":
+            case "radixlsd2":
+            case "rdxlsd2":
+                sorter = new RadixSortLSD2(delay);
+                break;
+            case "radix10":
+            case "radixlsd10":
+            case "rdx10":
+            case "rdxlsd10":
+                sorter = new RadixSortLSD10(delay);
                 break;
             case "selection":
             case "slc":

@@ -53,13 +53,13 @@ abstract public class VisualSort extends JFrame {
     }
 
     /**
-     * Helper method to sort in place as default
+     * Helper method to sort out of place as default
      * @param array - Array to sort
      * @return sorted array
      */
     public int[] sort(int[] array) {
         if (array.length == 0) return array;
-        return sort(array, true);
+        return sort(array, false);
     }
 
     /**

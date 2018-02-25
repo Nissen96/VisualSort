@@ -1,0 +1,14 @@
+public class RadixSortMSD10 extends RadixSortMSD {
+    RadixSortMSD10() {
+        super("Radix Sort MSD Base 10", 1);
+    }
+
+    RadixSortMSD10(int delay) {
+        super("Radix Sort MSD Base 10", delay);
+    }
+
+    public void doSort(int[] A) {
+        setBase(10);
+        super.doSort(A);
+    }
+}

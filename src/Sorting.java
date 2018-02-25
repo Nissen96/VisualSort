@@ -47,9 +47,10 @@ public class Sorting {
                 "bead",
                 "cycle",
                 "slow",
-                "stooge"
+                "stooge",
+                "pancake"
         };
-        sort(mRnd, slowSorters);
+        //sort(mRnd, slowSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {
@@ -62,7 +63,8 @@ public class Sorting {
                 "radixlsd10",
                 "shell",
                 "shelltokuda",
-                "shellciura"
+                "shellciura",
+                "bitonic"
         };
         sort(xlRnd, quickSorters, 3);
 
@@ -207,6 +209,10 @@ public class Sorting {
             case "grt":
                 sorter = new BeadSort(delay);
                 break;
+            case "bitonic":
+            case "btn":
+                sorter = new BitonicSort(delay);
+                break;
             case "bogo":
             case "bg":
             case "shotgun":
@@ -254,6 +260,10 @@ public class Sorting {
             case "mergetopdown":
             case "mtd":
                 sorter = new MergeSortTD(delay);
+                break;
+            case "pancake":
+            case "pnc":
+                sorter = new PancakeSort(delay);
                 break;
             case "quick":
             case "qck":

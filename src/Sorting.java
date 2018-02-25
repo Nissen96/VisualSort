@@ -39,7 +39,6 @@ public class Sorting {
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
-                "stooge",
                 "insertion",
                 "bubble",
                 "selection",
@@ -50,7 +49,7 @@ public class Sorting {
                 "slow",
                 "stooge"
         };
-        sort(mRnd, slowSorters, 5);
+        sort(mRnd, slowSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {

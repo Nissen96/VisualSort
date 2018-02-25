@@ -13,7 +13,7 @@ public class OddEvenSort extends VisualSort {
      * It's divided into two phases, an odd and an even phase
      * In the odd phase, Bubble Sort is performed on odd-indexed elements
      * In the even phase, Bubble Sort is performed on even-indexed elements
-     *
+     * This pushes all the larger numbers one up and all the smaller one down on each pass
      * @param A - Array to sort
      */
     public void doSort(int[] A) {

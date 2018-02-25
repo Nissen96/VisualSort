@@ -39,19 +39,20 @@ public class Sorting {
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
-                "cycle",
+                "slow",
                 "insertion",
                 "bubble",
                 "selection",
                 "cocktail",
                 "gnome",
-                "bead"
+                "bead",
+                "cycle",
+                "slow"
         };
         sort(mRnd, slowSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {
-                "cycle",
                 "mergetd",
                 "mergebu",
                 "quick",
@@ -102,6 +103,88 @@ public class Sorting {
             sorter.sort(array);
             Thread.sleep(2000);
         }
+    }
+
+    /**
+     * Get an already sorted array of integers
+     * @param size - Number of elements in array
+     * @return sorted array
+     */
+    private static int[] getSortedArray(int size) {
+        // Get a range of ints from 1..size
+        return IntStream.range(1, size + 1).toArray();
+    }
+
+    /**
+     * Get an array of integers in reverse order
+     * @param size - Number of elements in array
+     * @return array sorted in reverse order
+     */
+    private static int[] getReversedArray(int size) {
+        // Get a range of ints from size..1
+        return IntStream.range(1, size + 1).map(i -> size - i + 1).toArray();
+    }
+
+    /**
+     * Get an array of integers in random order
+     * @param size - Number of elements in array
+     * @return array in random order
+     */
+    private static int[] getRandomArray(int size) {
+        // Get a sorted array and randomize it
+        int[] array = getSortedArray(size);
+        return randomize(array);
+    }
+
+    /**
+     * Randomize an array
+     * @param array - The array to randomize
+     * @return the array with elements in random order
+     */
+    private static int[] randomize(int[] array) {
+        Random rnd = ThreadLocalRandom.current();
+
+        int idx, tmp;
+        // Iterate over array from the top and down
+        for (int i = array.length - 1; i > 0; i--) {
+            // Pick a random index to swap the current with
+            idx = rnd.nextInt(i + 1);
+
+            // Swap element at index idx and i
+            tmp = array[idx];
+            array[idx] = array[i];
+            array[i] = tmp;
+        }
+
+        return array;
+    }
+
+    /**
+     * Get a random array of integers with evenly spaced duplicates
+     * @param size - The number of elements in array
+     * @param numDistinct - The number of distinct elements
+     * @return sorted array with duplicates
+     */
+    private static int[] getDuplicatesArray(int size, int numDistinct) {
+        // Return if size isn't divisible by the number of distinct elements
+        if (size % numDistinct != 0) {
+            return new int[size];
+        }
+
+        // Initialize new array
+        int[] array = new int[size];
+
+        // Calculate number of each distinct integer
+        int numOfEachInt = size / numDistinct;
+
+        // For each distinct integer, fill the array with the correct amount
+        for (int i = 0; i < numDistinct; i++) {
+            for (int j = 0; j < numOfEachInt; j++) {
+                array[i * numOfEachInt + j] = (i + 1) * numOfEachInt;
+            }
+        }
+
+        return randomize(array);
     }
 
     /**
@@ -211,92 +294,14 @@ public class Sorting {
             case "shlt":
                 sorter = new ShellSortTokuda(delay);
                 break;
+            case "slow":
+            case "slw":
+                sorter = new SlowSort(delay);
+                break;
             default:
                 sorter = new NoSort(delay);
         }
 
         return sorter;
-    }
-
-    /**
-     * Get an already sorted array of integers
-     * @param size - Number of elements in array
-     * @return sorted array
-     */
-    private static int[] getSortedArray(int size) {
-        // Get a range of ints from 1..size
-        return IntStream.range(1, size + 1).toArray();
-    }
-
-    /**
-     * Get an array of integers in reverse order
-     * @param size - Number of elements in array
-     * @return array sorted in reverse order
-     */
-    private static int[] getReversedArray(int size) {
-        // Get a range of ints from size..1
-        return IntStream.range(1, size + 1).map(i -> size - i + 1).toArray();
-    }
-
-    /**
-     * Get an array of integers in random order
-     * @param size - Number of elements in array
-     * @return array in random order
-     */
-    private static int[] getRandomArray(int size) {
-        // Get a sorted array and randomize it
-        int[] array = getSortedArray(size);
-        return randomize(array);
-    }
-
-    /**
-     * Randomize an array
-     * @param array - The array to randomize
-     * @return the array with elements in random order
-     */
-    private static int[] randomize(int[] array) {
-        Random rnd = ThreadLocalRandom.current();
-
-        int idx, tmp;
-        // Iterate over array from the top and down
-        for (int i = array.length - 1; i > 0; i--) {
-            // Pick a random index to swap the current with
-            idx = rnd.nextInt(i + 1);
-
-            // Swap element at index idx and i
-            tmp = array[idx];
-            array[idx] = array[i];
-            array[i] = tmp;
-        }
-
-        return array;
-    }
-
-    /**
-     * Get a random array of integers with evenly spaced duplicates
-     * @param size - The number of elements in array
-     * @param numDistinct - The number of distinct elements
-     * @return sorted array with duplicates
-     */
-    private static int[] getDuplicatesArray(int size, int numDistinct) {
-        // Return if size isn't divisible by the number of distinct elements
-        if (size % numDistinct != 0) {
-            return new int[size];
-        }
-
-        // Initialize new array
-        int[] array = new int[size];
-
-        // Calculate number of each distinct integer
-        int numOfEachInt = size / numDistinct;
-
-        // For each distinct integer, fill the array with the correct amount
-        for (int i = 0; i < numDistinct; i++) {
-            for (int j = 0; j < numOfEachInt; j++) {
-                array[i * numOfEachInt + j] = (i + 1) * numOfEachInt;
-            }
-        }
-
-        return randomize(array);
     }
 }

@@ -39,7 +39,7 @@ public class Sorting {
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
-                "slow",
+                "stooge",
                 "insertion",
                 "bubble",
                 "selection",
@@ -47,9 +47,10 @@ public class Sorting {
                 "gnome",
                 "bead",
                 "cycle",
-                "slow"
+                "slow",
+                "stooge"
         };
-        sort(mRnd, slowSorters);
+        sort(mRnd, slowSorters, 5);
 
         // Quick sorting algorithms
         String[] quickSorters = {
@@ -210,7 +211,7 @@ public class Sorting {
             case "bogo":
             case "bg":
             case "shotgun":
-            case "stg":
+            case "sht":
             case "monkey":
             case "mnk":
                 sorter = new BogoSort(delay);
@@ -297,6 +298,10 @@ public class Sorting {
             case "slow":
             case "slw":
                 sorter = new SlowSort(delay);
+                break;
+            case "stooge":
+            case "stg":
+                sorter = new StoogeSort(delay);
                 break;
             default:
                 sorter = new NoSort(delay);

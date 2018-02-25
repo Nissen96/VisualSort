@@ -39,6 +39,7 @@ public class Sorting {
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
+                "oddeven",
                 "insertion",
                 "bubble",
                 "selection",
@@ -50,7 +51,7 @@ public class Sorting {
                 "stooge",
                 "pancake"
         };
-        //sort(mRnd, slowSorters);
+        sort(mRnd, slowSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {
@@ -260,6 +261,13 @@ public class Sorting {
             case "mergetopdown":
             case "mtd":
                 sorter = new MergeSortTD(delay);
+                break;
+            case "oddeven":
+            case "odd-even":
+            case "oev":
+            case "brick":
+            case "brk":
+                sorter = new OddEvenSort(delay);
                 break;
             case "pancake":
             case "pnc":

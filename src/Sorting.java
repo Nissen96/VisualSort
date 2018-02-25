@@ -39,6 +39,7 @@ public class Sorting {
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
+                "cycle",
                 "insertion",
                 "bubble",
                 "selection",
@@ -50,6 +51,7 @@ public class Sorting {
 
         // Quick sorting algorithms
         String[] quickSorters = {
+                "cycle",
                 "mergetd",
                 "mergebu",
                 "quick",
@@ -143,6 +145,10 @@ public class Sorting {
             case "count":
             case "cnt":
                 sorter = new CountingSort(delay);
+                break;
+            case "cycle":
+            case "ccl":
+                sorter = new CycleSort(delay);
                 break;
             case "gnome":
             case "gnm":

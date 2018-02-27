@@ -11,11 +11,11 @@ public class Sorting {
     public static void main(String[] args) throws InterruptedException {
         // Reverse sorted arrays
         // int[] xxsRvs = getReversedArray(10);
-        //int[] xsRvs = getReversedArray(50);
+        int[] xsRvs = getReversedArray(50);
         // int[] sRvs = getReversedArray(100);
-        //int[] mRvs = getReversedArray(200);
+        int[] mRvs = getReversedArray(200);
         // int[] lRvs = getReversedArray(400);
-        //int[] xlRvs = getReversedArray(800);
+        int[] xlRvs = getReversedArray(800);
         // int[] xxlRvs = getReversedArray(1200);
 
         // Duplicates arrays
@@ -33,13 +33,12 @@ public class Sorting {
         // int[] sRnd = getRandomArray(100);
         int[] mRnd = getRandomArray(200);
         // int[] lRnd = getRandomArray(400);
-        int[] xlRnd = getRandomArray(800);
+        int[] xlRnd = getRandomArray(512);
         // int[] xxlRnd = getRandomArray(1200);
 
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
-                "oddeven",
                 "insertion",
                 "bubble",
                 "selection",
@@ -49,7 +48,8 @@ public class Sorting {
                 "cycle",
                 "slow",
                 "stooge",
-                "pancake"
+                "pancake",
+                "oddeven"
         };
         sort(mRnd, slowSorters);
 
@@ -61,17 +61,18 @@ public class Sorting {
                 "heap",
                 "count",
                 "radixlsd2",
+                "radixlsd4",
                 "radixlsd10",
                 "shell",
                 "shelltokuda",
                 "shellciura",
                 "bitonic"
         };
-        sort(xlRnd, quickSorters, 3);
+        sort(xlRnd, quickSorters, 5);
 
         // Stupid sorting algorithms
         String[] dumbSorters = {"bogo"};
-        sort(xsRnd, dumbSorters, 0);
+        sort(xsRvs, dumbSorters, 0);
     }
 
     /**
@@ -286,6 +287,12 @@ public class Sorting {
             case "radixlsd2":
             case "rdxlsd2":
                 sorter = new RadixSortLSD2(delay);
+                break;
+            case "radix4":
+            case "rdx4":
+            case "radixlsd4":
+            case "rdxlsd4":
+                sorter = new RadixSortLSD4(delay);
                 break;
             case "radix10":
             case "radixlsd10":

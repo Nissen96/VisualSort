@@ -30,12 +30,12 @@ public class CountingSort extends VisualSort {
         // Let C[i] contain the number of elements equal to i
         for (int i = 0; i < A.length; i++) {
             C[A[i]] += 1;
-            // This visualization simply moves a black bar upwards to show the iteration
+            // This visualization simply shows the iteration
             visualize(A, i);
         }
 
         // Let C[i] contain the number of elements less than or equal to i
-        // This is the same as inputting the cumulative sum
+        // This is the same as inputting the cumulative sum up until i for each C[i]
         for (int i = 1; i <= k; i++) {
             C[i] += C[i - 1];
             // Same visualization as above

@@ -9,11 +9,11 @@ abstract public class RadixSort extends VisualSort {
 
     private int base;
 
-    public int getBase() {
+    int getBase() {
         return base;
     }
 
-    public void setBase(int base) {
+    void setBase(int base) {
         this.base = base;
     }
 

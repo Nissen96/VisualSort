@@ -1,4 +1,4 @@
-abstract public class RadixSortLSD extends RadixSort {
+abstract class RadixSortLSD extends RadixSort {
     RadixSortLSD(String title) {
         super(title, 1);
     }
@@ -14,7 +14,7 @@ abstract public class RadixSortLSD extends RadixSort {
      * It uses Counting Sort as a subroutine
      * @param A - The array to sort
      */
-    public void doSort(int[] A) {
+    void doSort(int[] A) {
         int b = getBase();
         int k = getMax(A);
 

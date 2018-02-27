@@ -1,4 +1,4 @@
-abstract public class RadixSort extends VisualSort {
+abstract class RadixSort extends VisualSort {
     RadixSort(String title) {
         super(title, 1);
     }

@@ -1,10 +1,6 @@
 abstract class RadixSort extends VisualSort {
     RadixSort(String title) {
-        super(title, 1);
-    }
-
-    RadixSort(String title, int delay) {
-        super(title, delay);
+        super(title);
     }
 
     private int base;

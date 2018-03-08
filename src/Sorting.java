@@ -55,6 +55,7 @@ public class Sorting {
 
         // Quick sorting algorithms
         String[] quickSorters = {
+
                 "mergetd",
                 "mergebu",
                 "quick",
@@ -68,7 +69,7 @@ public class Sorting {
                 "shellciura",
                 "bitonic"
         };
-        sort(xlRnd, quickSorters, 5);
+        sort(xlRnd, quickSorters, 1);
 
         // Stupid sorting algorithms
         String[] dumbSorters = {"bogo"};
@@ -76,36 +77,40 @@ public class Sorting {
     }
 
     /**
-     * Call sort() with a delay set to 1
+     * Initialize a given sorter and sort an array
      * @param array - Array to sort
-     * @param sorters - Algorithms to sort with
+     * @param sorterName - Name of algorithm to sort with
+     * @param delay - Delay between each visualization call
      * @throws InterruptedException - Thrown by Thread.sleep()
+     */
+    private static void sort(int[] array, String sorterName, int delay) throws InterruptedException {
+        // Initialize the sorting algorithm with the given delay
+        VisualSort sorter = displaySorter(sorterName);
+        sorter.setDelay(delay);
+
+        // Display the array for a second before sorting
+        sorter.visualize(array);
+        Thread.sleep(1000);
+
+        // Sort array - not done in place since the same array is used for each sorter
+        sorter.sort(array);
+        Thread.sleep(2000);
+    }
+
+    /**
+     * Call sort() with multiple sorters and a delay of 1
      */
     private static void sort(int[] array, String[] sorters) throws InterruptedException {
         sort(array, sorters, 1);
     }
 
     /**
-     * Sort an array with each of the given sorting algorithms
-     * @param array - Array to sort
-     * @param sorters - Algorithms to sort with
-     * @param delay - Delay between each visualization call
-     * @throws InterruptedException - Thrown by Thread.sleep()
+     * Call sort() with multiple sorters
      */
     private static void sort(int[] array, String[] sorters, int delay) throws InterruptedException {
-        // Go over each sorting algorithm
-        VisualSort sorter;
+        // Initialize each of the given sorter names and sort
         for (String sorterTitle : sorters) {
-            // Initialize the sorting algorithm with the given delay
-            sorter = displaySorter(sorterTitle, delay);
-
-            // Display the array for a second before sorting
-            sorter.visualize(array);
-            Thread.sleep(1000);
-
-            // Sort array - not done in place since the same array is used for each sorter
-            sorter.sort(array);
-            Thread.sleep(2000);
+            sort(array, sorterTitle, delay);
         }
     }
 
@@ -194,10 +199,9 @@ public class Sorting {
     /**
      * Initialize a new sorting algorithm for sorting any array of integers
      * @param title - The title of the sorter to initialize
-     * @param delay - The delay between each visualization call
      * @return new sorter of the input type
      */
-    private static VisualSort displaySorter(String title, int delay) {
+    private static VisualSort displaySorter(String title) {
         VisualSort sorter;
 
         // Convert to lowercase and remove spaces and "sort"
@@ -209,11 +213,11 @@ public class Sorting {
             case "gravity":
             case "bd":
             case "grt":
-                sorter = new BeadSort(delay);
+                sorter = new BeadSort();
                 break;
             case "bitonic":
             case "btn":
-                sorter = new BitonicSort(delay);
+                sorter = new BitonicSort();
                 break;
             case "bogo":
             case "bg":
@@ -221,62 +225,62 @@ public class Sorting {
             case "sht":
             case "monkey":
             case "mnk":
-                sorter = new BogoSort(delay);
+                sorter = new BogoSort();
                 break;
             case "bubble":
             case "bbl":
-                sorter = new BubbleSort(delay);
+                sorter = new BubbleSort();
                 break;
             case "cocktail":
             case "cocktailshaker":
             case "ctl":
-                sorter = new CocktailSort(delay);
+                sorter = new CocktailSort();
                 break;
             case "counting":
             case "count":
             case "cnt":
-                sorter = new CountingSort(delay);
+                sorter = new CountingSort();
                 break;
             case "cycle":
             case "ccl":
-                sorter = new CycleSort(delay);
+                sorter = new CycleSort();
                 break;
             case "gnome":
             case "gnm":
-                sorter = new GnomeSort(delay);
+                sorter = new GnomeSort();
                 break;
             case "heap":
             case "hp":
-                sorter = new HeapSort(delay);
+                sorter = new HeapSort();
                 break;
             case "insertion":
             case "ins":
-                sorter = new InsertionSort(delay);
+                sorter = new InsertionSort();
                 break;
             case "mergebu":
             case "mergebottomup":
             case "mbu":
-                sorter = new MergeSortBU(delay);
+                sorter = new MergeSortBU();
                 break;
             case "mergetd":
             case "mergetopdown":
             case "mtd":
-                sorter = new MergeSortTD(delay);
+                sorter = new MergeSortTD();
                 break;
             case "oddeven":
             case "odd-even":
             case "oev":
             case "brick":
             case "brk":
-                sorter = new OddEvenSort(delay);
+                sorter = new OddEvenSort();
                 break;
             case "pancake":
             case "pnc":
-                sorter = new PancakeSort(delay);
+                sorter = new PancakeSort();
                 break;
             case "quick":
             case "qck":
-                sorter = new QuickSort(delay);
+                sorter = new QuickSort();
                 break;
             case "radix":
             case "rdx":
@@ -286,49 +290,49 @@ public class Sorting {
             case "rdxlsd":
             case "radixlsd2":
             case "rdxlsd2":
-                sorter = new RadixSortLSD2(delay);
+                sorter = new RadixSortLSD2();
                 break;
             case "radix4":
             case "rdx4":
             case "radixlsd4":
             case "rdxlsd4":
-                sorter = new RadixSortLSD4(delay);
+                sorter = new RadixSortLSD4();
                 break;
             case "radix10":
             case "radixlsd10":
             case "rdx10":
             case "rdxlsd10":
-                sorter = new RadixSortLSD10(delay);
+                sorter = new RadixSortLSD10();
                 break;
             case "selection":
             case "slc":
-                sorter = new SelectionSort(delay);
+                sorter = new SelectionSort();
                 break;
             case "shell":
             case "shl":
             case "shelloriginal":
             case "shellorg":
             case "shlo":
-                sorter = new ShellSortOrg(delay);
+                sorter = new ShellSortOrg();
                 break;
             case "shellciura":
             case "shlc":
-                sorter = new ShellSortCiura(delay);
+                sorter = new ShellSortCiura();
                 break;
             case "shelltokuda":
             case "shlt":
-                sorter = new ShellSortTokuda(delay);
+                sorter = new ShellSortTokuda();
                 break;
             case "slow":
             case "slw":
-                sorter = new SlowSort(delay);
+                sorter = new SlowSort();
                 break;
             case "stooge":
             case "stg":
-                sorter = new StoogeSort(delay);
+                sorter = new StoogeSort();
                 break;
             default:
-                sorter = new NoSort(delay);
+                sorter = new NoSort();
         }
 
         return sorter;

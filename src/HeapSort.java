@@ -1,10 +1,6 @@
 public class HeapSort extends VisualSort {
     HeapSort() {
-        super("Heap Sort", 1);
-    }
-
-    HeapSort(int delay) {
-        super("Heap Sort", delay);
+        super("Heap Sort");
     }
 
     /**

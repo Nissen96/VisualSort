@@ -1,10 +1,6 @@
 public class BogoSort extends VisualSort {
     BogoSort() {
-        super("Bogo Sort", 1);
-    }
-
-    BogoSort(int delay) {
-        super("Bogo Sort", delay);
+        super("Bogo Sort");
     }
 
     /**

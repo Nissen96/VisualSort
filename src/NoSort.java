@@ -1,10 +1,6 @@
 public class NoSort extends VisualSort{
     NoSort() {
-        super("No algorithm specified...", 1);
-    }
-
-    NoSort(int delay) {
-        super( "No algorithm specified", delay);
+        super("No algorithm specified...");
     }
 
     /**

@@ -1,10 +1,6 @@
 public class OddEvenSort extends VisualSort {
     OddEvenSort() {
-        super("Odd-Even Sort", 1);
-    }
-
-    OddEvenSort(int delay) {
-        super("Odd-Even Sort", delay);
+        super("Odd-Even Sort");
     }
 
     /**

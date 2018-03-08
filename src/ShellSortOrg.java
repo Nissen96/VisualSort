@@ -1,10 +1,6 @@
 public class ShellSortOrg extends ShellSort {
     ShellSortOrg() {
-        super("Shell Sort - Donald Shell", 1);
-    }
-
-    ShellSortOrg(int delay) {
-        super("Shell Sort - Donald Shell", delay);
+        super("Shell Sort - Donald Shell");
     }
 
     /**

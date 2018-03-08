@@ -1,10 +1,6 @@
 public class CocktailSort extends VisualSort {
     CocktailSort() {
-        super("Cocktail Sort", 1);
-    }
-
-    CocktailSort(int delay) {
-        super("Cocktail Sort", delay);
+        super("Cocktail Sort");
     }
 
     /**

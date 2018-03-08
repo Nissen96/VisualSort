@@ -1,10 +1,6 @@
 public class MergeSortBU extends MergeSort {
     MergeSortBU() {
-        super("Merge Sort - Bottom Up", 1);
-    }
-
-    MergeSortBU(int delay) {
-        super("Merge Sort - Bottom Up", delay);
+        super("Merge Sort - Bottom Up");
     }
 
     /**

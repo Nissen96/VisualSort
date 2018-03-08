@@ -2,11 +2,7 @@ import java.util.Arrays;
 
 public class BeadSort extends VisualSort {
     BeadSort() {
-        super("Bead Sort", 1);
-    }
-
-    BeadSort(int delay) {
-        super("Bead Sort", delay);
+        super("Bead Sort");
     }
 
     public void doSort(int[] A) {

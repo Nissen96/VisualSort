@@ -1,10 +1,6 @@
 public class SlowSort extends VisualSort {
     SlowSort() {
-        super("Slow Sort", 1);
-    }
-
-    SlowSort(int delay) {
-        super("Slow Sort", delay);
+        super("Slow Sort");
     }
 
     /**

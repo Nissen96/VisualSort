@@ -21,7 +21,7 @@ abstract public class VisualSort extends JFrame {
     /**
      * Construct the JFrame for the sorting animation.
      */
-    VisualSort(String title, int delay) {
+    VisualSort(String title) {
         super(title);
 
         // Get windows size
@@ -32,7 +32,7 @@ abstract public class VisualSort extends JFrame {
         // Store parameters
         this.hue = (float) Math.random();
         this.saturation = (float) Math.random();
-        this.delay = delay;
+        this.delay = 1;
         this.currentIndex = -1;
 
         // Create window

@@ -1,10 +1,6 @@
 public class InsertionSort extends VisualSort {
     InsertionSort() {
-        super("Insertion Sort", 1);
-    }
-
-    InsertionSort(int delay) {
-        super("Insertion Sort", delay);
+        super("Insertion Sort");
     }
 
     /**

@@ -1,10 +1,6 @@
 public class StoogeSort extends VisualSort {
     StoogeSort() {
-        super("Stooge Sort", 1);
-    }
-
-    StoogeSort(int delay) {
-        super("Stooge Sort", delay);
+        super("Stooge Sort");
     }
 
     /**

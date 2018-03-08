@@ -1,10 +1,6 @@
 public class RadixSortMSD2 extends RadixSortMSD {
     RadixSortMSD2() {
-        super("Radix Sort MSD Base 2", 1);
-    }
-
-    RadixSortMSD2(int delay) {
-        super("Radix Sort MSD Base 2", delay);
+        super("Radix Sort MSD Base 2");
     }
 
     public void doSort(int[] A) {

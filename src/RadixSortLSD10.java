@@ -1,10 +1,6 @@
 public class RadixSortLSD10 extends RadixSortLSD {
     RadixSortLSD10() {
-        super("Radix Sort LSD Base 10", 1);
-    }
-
-    RadixSortLSD10(int delay) {
-        super("Radix Sort LSD Base 10", delay);
+        super("Radix Sort LSD Base 10");
     }
 
     public void doSort(int[] A) {

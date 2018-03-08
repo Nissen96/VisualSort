@@ -1,10 +1,6 @@
 public class MergeSortTD extends MergeSort {
     MergeSortTD() {
-        super("Merge Sort - Top Down", 1);
-    }
-
-    MergeSortTD(int delay) {
-        super("Merge Sort - Top Down", delay);
+        super("Merge Sort - Top Down");
     }
 
     /**

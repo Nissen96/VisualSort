@@ -2,11 +2,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class QuickSort extends VisualSort {
     QuickSort() {
-        super("Quick Sort", 1);
-    }
-
-    QuickSort(int delay) {
-        super("Quick Sort", delay);
+        super("Quick Sort");
     }
 
     /**

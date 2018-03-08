@@ -1,10 +1,6 @@
 abstract class RadixSortLSD extends RadixSort {
     RadixSortLSD(String title) {
-        super(title, 1);
-    }
-
-    RadixSortLSD(String title, int delay) {
-        super(title, delay);
+        super(title);
     }
 
     /**

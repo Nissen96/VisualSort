@@ -1,10 +1,6 @@
 public class CycleSort extends VisualSort {
     CycleSort() {
-        super("Cycle Sort", 1);
-    }
-
-    CycleSort(int delay) {
-        super("Cycle Sort", delay);
+        super("Cycle Sort");
     }
 
     /**

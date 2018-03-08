@@ -1,10 +1,6 @@
 public class ShellSortCiura extends ShellSort {
     ShellSortCiura() {
-        super("Shell Sort - Marcin Ciura", 1);
-    }
-
-    ShellSortCiura(int delay) {
-        super("Shell Sort - Marcin Ciura", delay);
+        super("Shell Sort - Marcin Ciura");
     }
 
     /**

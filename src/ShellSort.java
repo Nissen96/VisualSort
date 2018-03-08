@@ -1,10 +1,6 @@
 abstract public class ShellSort extends VisualSort {
     ShellSort(String title) {
-        super(title, 1);
-    }
-
-    ShellSort(String title, int delay) {
-        super(title, delay);
+        super(title);
     }
 
     private int[] gaps;

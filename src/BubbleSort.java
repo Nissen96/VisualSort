@@ -1,10 +1,6 @@
 public class BubbleSort extends VisualSort {
     BubbleSort() {
-        super("Bubble Sort", 1);
-    }
-
-    BubbleSort(int delay) {
-        super("Bubble Sort", delay);
+        super("Bubble Sort");
     }
 
     /**

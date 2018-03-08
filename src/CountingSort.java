@@ -2,11 +2,7 @@ import java.util.Arrays;
 
 public class CountingSort extends VisualSort {
     CountingSort() {
-        super("Counting Sort", 1);
-    }
-
-    CountingSort(int delay) {
-        super("Counting Sort", delay);
+        super("Counting Sort");
     }
 
     /**

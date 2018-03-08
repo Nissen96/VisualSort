@@ -2,11 +2,7 @@ abstract class MergeSort extends VisualSort {
     /* MergeSort is an abstract class providing the merge method
     to the concrete implementations of merge sort*/
     MergeSort(String title) {
-        super(title, 1);
-    }
-
-    MergeSort(String title, int delay) {
-        super(title, delay);
+        super(title);
     }
 
     /**

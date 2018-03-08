@@ -1,10 +1,6 @@
 public class ShellSortTokuda extends ShellSort {
     ShellSortTokuda() {
-        super("Shell Sort - Tokuda", 1);
-    }
-
-    ShellSortTokuda(int delay) {
-        super("Shell Sort - Tokuda", delay);
+        super("Shell Sort - Tokuda");
     }
 
     /**

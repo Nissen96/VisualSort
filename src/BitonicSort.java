@@ -1,10 +1,6 @@
 public class BitonicSort extends VisualSort {
     BitonicSort() {
-        super("Bitonic Sort", 1);
-    }
-
-    BitonicSort(int delay) {
-        super ("Bitonic Sort", delay);
+        super("Bitonic Sort");
     }
 
     public void doSort(int[] A) {

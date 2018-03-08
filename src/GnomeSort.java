@@ -1,10 +1,6 @@
 public class GnomeSort extends VisualSort {
     GnomeSort() {
-        super("Gnome Sort", 1);
-    }
-
-    GnomeSort(int delay) {
-        super("Gnome Sort", delay);
+        super("Gnome Sort");
     }
 
     /**

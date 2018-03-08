@@ -1,10 +1,6 @@
 public class PancakeSort extends VisualSort {
     PancakeSort() {
-        super("Pancake Sort", 1);
-    }
-
-    PancakeSort(int delay) {
-        super("Pancake Sort", delay);
+        super("Pancake Sort");
     }
 
     /**

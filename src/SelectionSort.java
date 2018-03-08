@@ -1,10 +1,6 @@
 public class SelectionSort extends VisualSort {
     SelectionSort() {
-        super("Selection Sort", 1);
-    }
-
-    SelectionSort(int delay) {
-        super("Selection Sort", delay);
+        super("Selection Sort");
     }
 
     /**

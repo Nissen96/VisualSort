@@ -10,31 +10,31 @@ import java.util.stream.IntStream;
 public class Sorting {
     public static void main(String[] args) throws InterruptedException {
         // Reverse sorted arrays
-        // int[] xxsRvs = getReversedArray(10);
-        int[] xsRvs = getReversedArray(50);
-        // int[] sRvs = getReversedArray(100);
-        int[] mRvs = getReversedArray(200);
-        // int[] lRvs = getReversedArray(400);
-        int[] xlRvs = getReversedArray(800);
-        // int[] xxlRvs = getReversedArray(1200);
+        // int[] xxsRvs = getReversedArray(16);
+        int[] xsRvs = getReversedArray(64);
+        // int[] sRvs = getReversedArray(128);
+        int[] mRvs = getReversedArray(256);
+        // int[] lRvs = getReversedArray(512);
+        int[] xlRvs = getReversedArray(1024);
+        // int[] xxlRvs = getReversedArray(2048);
 
         // Duplicates arrays
-        // int[] xxsDpl = getDuplicatesArray(10, 2);
-        // int[] xsDpl = getDuplicatesArray(50, 5);
-        // int[] sDpl = getDuplicatesArray(100, 10);
-        // int[] mDpl = getDuplicatesArray(200, 20);
-        // int[] lDpl = getDuplicatesArray(400, 40);
-        // int[] xlDpl = getDuplicatesArray(800, 80);
-        // int[] xxlDpl = getDuplicatesArray(1200, 120);
+        // int[] xxsDpl = getDuplicatesArray(16, 2);
+        // int[] xsDpl = getDuplicatesArray(64, 8);
+        // int[] sDpl = getDuplicatesArray(128, 16);
+        // int[] mDpl = getDuplicatesArray(256, 32);
+        // int[] lDpl = getDuplicatesArray(512, 64);
+        // int[] xlDpl = getDuplicatesArray(1024, 128);
+        // int[] xxlDpl = getDuplicatesArray(2048, 256);
 
         // Random arrays
-        // int[] xxsRnd = getRandomArray(10);
-        int[] xsRnd = getRandomArray(50);
-        // int[] sRnd = getRandomArray(100);
-        int[] mRnd = getRandomArray(200);
-        // int[] lRnd = getRandomArray(400);
-        int[] xlRnd = getRandomArray(512);
-        // int[] xxlRnd = getRandomArray(1200);
+        // int[] xxsRnd = getRandomArray(16);
+        int[] xsRnd = getRandomArray(64);
+        // int[] sRnd = getRandomArray(128);
+        int[] mRnd = getRandomArray(256);
+        // int[] lRnd = getRandomArray(512);
+        int[] xlRnd = getRandomArray(1024);
+        // int[] xxlRnd = getRandomArray(2048);
 
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
@@ -55,7 +55,6 @@ public class Sorting {
 
         // Quick sorting algorithms
         String[] quickSorters = {
-
                 "mergetd",
                 "mergebu",
                 "quick",
@@ -69,7 +68,7 @@ public class Sorting {
                 "shellciura",
                 "bitonic"
         };
-        sort(xlRnd, quickSorters, 1);
+        sort(xlRnd, quickSorters);
 
         // Stupid sorting algorithms
         String[] dumbSorters = {"bogo"};

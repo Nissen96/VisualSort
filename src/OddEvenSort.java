@@ -21,16 +21,18 @@ public class OddEvenSort extends VisualSort {
             // Perform Bubble Sort on all odd/even pairs
             for (int i = 1; i < A.length - 1; i += 2) {
                 if (A[i] > A[i + 1]) {
-                    swap(A, i, i + 1);
+                    Util.swap(A, i, i + 1);
                     sorted = false;
+                    visualize(A);
                 }
             }
 
             // Perform Bubble Sort on all even/odd pairs
             for (int i = 0; i < A.length - 1; i += 2) {
                 if (A[i] > A[i + 1]) {
-                    swap(A, i, i + 1);
+                    Util.swap(A, i, i + 1);
                     sorted = false;
+                    visualize(A);
                 }
             }
         }

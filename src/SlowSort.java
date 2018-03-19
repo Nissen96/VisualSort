@@ -34,7 +34,8 @@ public class SlowSort extends VisualSort {
             // by finding the maximum in the now two sorted halves
             if (A[r] < A[q]) {
                 // Place at the end of the list
-                swap(A, r, q);
+                Util.swap(A, r, q);
+                visualize(A);
             }
 
             // Sort everything but the maximum element recursively

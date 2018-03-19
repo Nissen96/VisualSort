@@ -28,7 +28,8 @@ public class SelectionSort extends VisualSort {
             }
 
             // Swap minimum element with the current
-            swap(A, min, i);
+            Util.swap(A, min, i);
+            visualize(A);
         }
     }
 }

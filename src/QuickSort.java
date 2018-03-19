@@ -49,7 +49,8 @@ public class QuickSort extends VisualSort {
         int x = A[randIdx];
 
         // Swap the random element with the last
-        swap(A, randIdx, r);
+        Util.swap(A, randIdx, r);
+        visualize(A);
 
         // Iterate over array and partition elements <= x to the left and > x to the right
         int i = p - 1;
@@ -59,12 +60,14 @@ public class QuickSort extends VisualSort {
             // - which is at the end of the right partition
             if (A[j] <= x) {
                 i++;
-                swap(A, i, j);
+                Util.swap(A, i, j);
+                visualize(A);
             }
         }
 
         // Insert x in the middle of the partitions
-        swap(A, i + 1, r);
+        Util.swap(A, i + 1, r);
+        visualize(A);
         return i + 1;
     }
 }

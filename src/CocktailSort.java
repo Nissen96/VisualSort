@@ -25,7 +25,9 @@ public class CocktailSort extends VisualSort {
             // Bubble largest element upwards like bubble sort
             for (int i = startIdx; i < endIdx; i++) {
                 if (A[i] > A[i + 1]) {
-                    swap(A, i, i + 1);
+                    Util.swap(A, i, i + 1);
+                    visualize(A);
+
                     newEndIdx = i;
                 }
             }
@@ -36,7 +38,9 @@ public class CocktailSort extends VisualSort {
             // Do the same downwards for the smallest element
             for (int i = endIdx - 1; i >= startIdx; i--) {
                 if (A[i] > A[i + 1]) {
-                    swap(A, i, i + 1);
+                    Util.swap(A, i, i + 1);
+                    visualize(A);
+
                     newStartIdx = i;
                 }
             }

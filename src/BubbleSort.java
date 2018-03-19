@@ -20,7 +20,9 @@ public class BubbleSort extends VisualSort {
             // Swap them if they are out of order
             for (int j = 0; j < length - i - 1; j++) {
                 if (A[j] > A[j + 1]) {
-                    swap(A, j, j + 1);
+                    Util.swap(A, j, j + 1);
+                    visualize(A);
+
                     swapped = true;
                 }
             }

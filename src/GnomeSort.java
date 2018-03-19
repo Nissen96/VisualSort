@@ -21,7 +21,9 @@ public class GnomeSort extends VisualSort {
                 idx++;
             // If the elements are out of order, swap them and go a step back
             } else {
-                swap(A, idx, idx - 1);
+                Util.swap(A, idx, idx - 1);
+                visualize(A);
+
                 idx--;
             }
         }

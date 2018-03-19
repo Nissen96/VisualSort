@@ -9,8 +9,8 @@ public class BogoSort extends VisualSort {
      * @param A - Array to sort
      */
     public void doSort(int[] A) {
-        while (!isSorted(A)) {
-            shuffle(A);
+        while (!Util.isSorted(A)) {
+            Util.shuffle(A);
             visualize(A);
         }
     }

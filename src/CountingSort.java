@@ -14,11 +14,11 @@ public class CountingSort extends VisualSort {
      */
     public void doSort(int[] A) {
         // Find largest element in the array
-        int k = getMax(A);
+        int k = Util.getMax(A);
 
         // Make a copy of A - Usually an empty array of size A.length would be made
         // But it is more visually pleasing to do everything in the same array as the unsorted values
-        int[] B = arrayCopy(A);
+        int[] B = Util.arrayCopy(A);
 
         // Make an array to count each distinct value
         int[] C = new int[k + 1];

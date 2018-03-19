@@ -1,6 +1,3 @@
-import javax.sound.midi.MidiChannel;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.Synthesizer;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
@@ -17,7 +14,7 @@ public class Sorting {
         int[] xxsRvs = getReversedArray(16);
         int[] xsRvs = getReversedArray(64);
         int[] sRvs = getReversedArray(144);
-        int[] mRvs = getReversedArray(258);
+        int[] mRvs = getReversedArray(200);
         int[] lRvs = getReversedArray(625);
         int[] xlRvs = getReversedArray(1024);
         int[] xxlRvs = getReversedArray(4096);
@@ -44,7 +41,7 @@ public class Sorting {
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
             //"insertion",
-            //"bubble",
+            "bubble",
             //"selection",
             //"cocktail",
             //"gnome",
@@ -95,7 +92,7 @@ public class Sorting {
     private static void sort(int[] array, String sorterName, int delay) throws InterruptedException {
         // Initialize the sorting algorithm with the given delay
         VisualSort sorter = displaySorter(sorterName);
-        sorter.setDelay(delay);
+        //sorter.setDelay(delay);
 
         // Display the array for a second before sorting
         sorter.visualize(array);

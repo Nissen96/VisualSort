@@ -21,7 +21,7 @@ abstract class RadixSort extends VisualSort {
     void countingSort(int[] A, int digit) {
         // Make a copy of A and a counter C which stores the count of each digit
         // The numbers are in the given base and C therefore only needs to store base positions
-        int[] B = arrayCopy(A);
+        int[] B = Util.arrayCopy(A);
         int[] C = new int[base];
         int digitOfNumber;
 

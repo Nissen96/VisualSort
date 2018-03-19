@@ -33,7 +33,8 @@ public class BitonicSort extends VisualSort {
     private void compare(int[] A, int i, int j, boolean asc)
     {
         if (asc == (A[i]>A[j])) {
-            swap(A, i, j);
+            Util.swap(A, i, j);
+            visualize(A);
         }
     }
 

@@ -7,7 +7,7 @@ public class BeadSort extends VisualSort {
 
     public void doSort(int[] A) {
         int len = A.length;
-        int max = getMax(A);
+        int max = Util.getMax(A);
         int i, j;
 
         // Set up abacus with 1s at each bead position and 0 at empty positions

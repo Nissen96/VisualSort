@@ -22,8 +22,9 @@ public class InsertionSort extends VisualSort {
             // Move any previous elements smaller than the current up
             while (index > 0 && A[index - 1] > value) {
                 A[index] = A[index - 1];
-                index--;
                 visualize(A);
+
+                index--;
             }
 
             // Insert element into its location in the sorted array

@@ -14,7 +14,7 @@ public class Sorting {
         int[] xxsRvs = getReversedArray(16);
         int[] xsRvs = getReversedArray(64);
         int[] sRvs = getReversedArray(144);
-        int[] mRvs = getReversedArray(200);
+        int[] mRvs = getReversedArray(256);
         int[] lRvs = getReversedArray(625);
         int[] xlRvs = getReversedArray(1024);
         int[] xxlRvs = getReversedArray(4096);
@@ -41,7 +41,7 @@ public class Sorting {
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
             //"insertion",
-            "bubble",
+            //"bubble",
             //"selection",
             //"cocktail",
             //"gnome",
@@ -50,21 +50,18 @@ public class Sorting {
             //"slow",
             //"stooge",
             //"pancake",
-            "oddeven"
+            //"oddeven"
         };
-        sort(mRvs, slowSorters);
+        sort(mRnd, slowSorters);
 
         // Medium sorting algorithms
         String[] mediumSorters = {
-            "shell",
-            "shelltokuda",
-            "shellciura"
+            "comb"
         };
-        sort(xlRnd, mediumSorters);
+        sort(xlRnd, mediumSorters, 1);
 
         // Quick sorting algorithms
         String[] quickSorters = {
-            "bead",
             "quick",
             "heap",
             "mergetd",
@@ -73,6 +70,9 @@ public class Sorting {
             "radixlsd2",
             "radixlsd4",
             "radixlsd10",
+            "shell",
+            "shelltokuda",
+            "shellciura",
             "bitonic"
         };
         sort(xxlRnd, quickSorters);
@@ -92,9 +92,10 @@ public class Sorting {
     private static void sort(int[] array, String sorterName, int delay) throws InterruptedException {
         // Initialize the sorting algorithm with the given delay
         VisualSort sorter = displaySorter(sorterName);
-        //sorter.setDelay(delay);
+        sorter.setDelay(delay);
 
         // Display the array for a second before sorting
+        Thread.sleep(100);
         sorter.visualize(array);
         Thread.sleep(1000);
 
@@ -241,6 +242,10 @@ public class Sorting {
             case "cocktailshaker":
             case "ctl":
                 sorter = new CocktailSort();
+                break;
+            case "comb":
+            case "cmb":
+                sorter = new CombSort();
                 break;
             case "counting":
             case "count":

@@ -1,5 +1,13 @@
+import javax.imageio.ImageIO;
+import javax.sound.midi.MidiChannel;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Synthesizer;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -10,6 +18,9 @@ abstract public class VisualSort extends JFrame {
     // Current state of array to draw
     private int[] currentArray;
 
+    //private float[][] imgArray;
+    //private BufferedImage img;
+
     // Drawing options
     private int width;
     private int height;
@@ -17,6 +28,10 @@ abstract public class VisualSort extends JFrame {
     private float saturation;
     private int delay;
     private int currentIndex;
+    private int buffer;
+    private int frame;
+
+    //private TonePlayer tonePlayer;
 
     /**
      * Construct the JFrame for the sorting animation.
@@ -26,15 +41,39 @@ abstract public class VisualSort extends JFrame {
 
         // Get windows size
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.width = screenSize.width - 50;
-        this.height = screenSize.height - 50;
+        this.width = screenSize.width - 200;
+        this.height = screenSize.height - 200;
 
         // Store parameters
         this.hue = (float) Math.random();
         this.saturation = (float) Math.random();
         this.delay = 1;
         this.currentIndex = -1;
+        this.buffer = 1;
+        this.frame = 0;
+        //this.tonePlayer = new TonePlayer();
 
+        /*
+        try {
+            img = ImageIO.read(new File("img/Mona_Lisa.jpg"));
+        } catch (IOException e) {e.printStackTrace();}
+
+        int size = 64;
+        this.imgArray = new float[size * size][3];
+        int i = 0;
+        for (int y = 0; y < size; y++) {
+            for (int x = 0; x < size; x++) {
+                int rgb = img.getRGB(x, y);
+                float[] hsb = new float[3];
+                int r = (rgb >> 16) & 0xFF;
+                int g = (rgb >> 8) & 0xFF;
+                int b = (rgb) & 0xFF;
+                Color.RGBtoHSB(r, g, b, hsb);
+                imgArray[i] = hsb;
+                i++;
+            }
+        }
+        */
         // Create window
         setSize(width, height);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -50,6 +89,10 @@ abstract public class VisualSort extends JFrame {
      */
     public void setDelay(int delay) {
         this.delay = delay;
+    }
+
+    public void setBuffer(int buffer) {
+        this.buffer = buffer;
     }
 
     /**
@@ -104,10 +147,11 @@ abstract public class VisualSort extends JFrame {
      * @param i - The index of the first element
      * @param j - The index of the second element
      */
-    static void swap(int[] array, int i, int j) {
+    void swap(int[] array, int i, int j) {
         int tmp = array[i];
         array[i] = array[j];
         array[j] = tmp;
+        visualize(array);
     }
 
     /**
@@ -201,15 +245,19 @@ abstract public class VisualSort extends JFrame {
      * @param curIdx - Index of the element to display a black bar at
      */
     void visualize(int[] array, int curIdx) {
-        // Call paint() with the input options
-        this.currentArray = array;
-        this.currentIndex = curIdx;
-        repaint();
+        frame++;
+        if (frame % buffer == 0) {
+            // Call paint() with the input options
+            this.currentArray = array;
+            this.currentIndex = curIdx;
+            repaint();
 
-        // Optional delay
-        try {
-            Thread.sleep(delay, 0);
-        } catch (InterruptedException e) {}
+            // Optional delay
+            try {
+                Thread.sleep(delay, 0);
+            } catch (InterruptedException e) {
+            }
+        }
     }
 
     /**
@@ -245,11 +293,35 @@ abstract public class VisualSort extends JFrame {
             // This can be used to e.g. display an algorithm searching through the array
             // when no swaps are done (and therefore no changes to the bars)
             if (i == currentIndex) {
-                g.setColor(Color.BLACK);
+                g.setColor(Color.RED);
             } else {
+                //g.setColor(Color.BLACK);
                 g.setColor(Color.getHSBColor(hue, saturation, currentArray[i] / (float) numElements));
             }
             g.fillRect(100 + i * squareWidth, height - 100 - colHeight, squareWidth, colHeight);
+        }
+        //tonePlayer.play(440, 100);
+        //tonePlayer.close();
+    }
+
+    public void paint2(Graphics g) {
+        if (currentArray == null) return;
+
+        int numElements = currentArray.length;
+        int size = (int) Math.ceil(Math.sqrt(numElements));
+        int scale = (height - 200) / size;
+
+        // Go to each index in the array, and fill a square in the
+        // animation with the brightness representing the magnitude of the value.
+        for (int i = 0 ; i < numElements; i++ ) {
+            if (i == currentIndex) {
+                g.setColor(Color.BLACK);
+            } else {
+                //float[] tile = imgArray[currentArray[i]];
+                //g.setColor(Color.getHSBColor(tile[0], tile[1], tile[2]));
+                g.setColor(Color.getHSBColor(hue, saturation, currentArray[i] / (float) numElements));
+            }
+            g.fillRect(800 + (i % size) * scale, 100 + i / size * scale, scale, scale);
         }
     }
 }

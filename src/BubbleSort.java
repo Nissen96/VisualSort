@@ -22,7 +22,6 @@ public class BubbleSort extends VisualSort {
                 if (A[j] > A[j + 1]) {
                     swap(A, j, j + 1);
                     swapped = true;
-                    visualize(A);
                 }
             }
 

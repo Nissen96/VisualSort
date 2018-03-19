@@ -20,7 +20,6 @@ public class HeapSort extends VisualSort {
         for (int i = A.length - 1; i > 0; i--) {
             // Swap the largest element, the root, into the sorted part of the array
             swap(A, 0, i);
-            visualize(A);
 
             // The element is then removed from the heap
             heapSize--;
@@ -67,7 +66,6 @@ public class HeapSort extends VisualSort {
         // Swap the current node with the largest found
         if (largest != i) {
             swap(A, i, largest);
-            visualize(A);
 
             // Max-Heapify recursively on the largest element
             maxHeapify(A, largest, heapSize);

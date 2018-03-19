@@ -35,7 +35,6 @@ public class SlowSort extends VisualSort {
             if (A[r] < A[q]) {
                 // Place at the end of the list
                 swap(A, r, q);
-                visualize(A);
             }
 
             // Sort everything but the maximum element recursively

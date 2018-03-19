@@ -30,7 +30,7 @@ abstract class RadixSort extends VisualSort {
             // Get the digit from B on position 'digit'
             digitOfNumber = (int) (B[i] / Math.pow(base, digit)) % base;
             C[digitOfNumber]++;
-            visualize(A, i);
+            //visualize(A, i);
         }
 
         // Compute the cumulative # of digits of C

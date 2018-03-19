@@ -1,4 +1,6 @@
-import java.util.Arrays;
+import javax.sound.midi.MidiChannel;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Synthesizer;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
@@ -9,66 +11,74 @@ import java.util.stream.IntStream;
  */
 public class Sorting {
     public static void main(String[] args) throws InterruptedException {
+
+
         // Reverse sorted arrays
-        // int[] xxsRvs = getReversedArray(16);
+        int[] xxsRvs = getReversedArray(16);
         int[] xsRvs = getReversedArray(64);
-        // int[] sRvs = getReversedArray(128);
-        int[] mRvs = getReversedArray(256);
-        // int[] lRvs = getReversedArray(512);
+        int[] sRvs = getReversedArray(144);
+        int[] mRvs = getReversedArray(258);
+        int[] lRvs = getReversedArray(625);
         int[] xlRvs = getReversedArray(1024);
-        // int[] xxlRvs = getReversedArray(2048);
+        int[] xxlRvs = getReversedArray(4096);
 
         // Duplicates arrays
-        // int[] xxsDpl = getDuplicatesArray(16, 2);
-        // int[] xsDpl = getDuplicatesArray(64, 8);
-        // int[] sDpl = getDuplicatesArray(128, 16);
-        // int[] mDpl = getDuplicatesArray(256, 32);
-        // int[] lDpl = getDuplicatesArray(512, 64);
-        // int[] xlDpl = getDuplicatesArray(1024, 128);
-        // int[] xxlDpl = getDuplicatesArray(2048, 256);
+        int[] xxsDpl = getDuplicatesArray(16, 8);
+        int[] xsDpl = getDuplicatesArray(64, 8);
+        int[] sDpl = getDuplicatesArray(144, 8);
+        int[] mDpl = getDuplicatesArray(256, 8);
+        int[] lDpl = getDuplicatesArray(625, 5);
+        int[] xlDpl = getDuplicatesArray(1024, 8);
+        int[] xxlDpl = getDuplicatesArray(4096, 8);
 
         // Random arrays
-        // int[] xxsRnd = getRandomArray(16);
+        int[] xxsRnd = getRandomArray(16);
         int[] xsRnd = getRandomArray(64);
-        // int[] sRnd = getRandomArray(128);
+        int[] sRnd = getRandomArray(144);
         int[] mRnd = getRandomArray(256);
-        // int[] lRnd = getRandomArray(512);
+        int[] lRnd = getRandomArray(625);
         int[] xlRnd = getRandomArray(1024);
-        // int[] xxlRnd = getRandomArray(2048);
+        int[] xxlRnd = getRandomArray(4096);
 
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
-                "insertion",
-                "bubble",
-                "selection",
-                "cocktail",
-                "gnome",
-                "bead",
-                "cycle",
-                "slow",
-                "stooge",
-                "pancake",
-                "oddeven"
+            //"insertion",
+            //"bubble",
+            //"selection",
+            //"cocktail",
+            //"gnome",
+            //"bead",
+            //"cycle",
+            //"slow",
+            //"stooge",
+            //"pancake",
+            "oddeven"
         };
-        sort(mRnd, slowSorters);
+        sort(mRvs, slowSorters);
+
+        // Medium sorting algorithms
+        String[] mediumSorters = {
+            "shell",
+            "shelltokuda",
+            "shellciura"
+        };
+        sort(xlRnd, mediumSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {
-                "mergetd",
-                "mergebu",
-                "quick",
-                "heap",
-                "count",
-                "radixlsd2",
-                "radixlsd4",
-                "radixlsd10",
-                "shell",
-                "shelltokuda",
-                "shellciura",
-                "bitonic"
+            "bead",
+            "quick",
+            "heap",
+            "mergetd",
+            "mergebu",
+            "count",
+            "radixlsd2",
+            "radixlsd4",
+            "radixlsd10",
+            "bitonic"
         };
-        sort(xlRnd, quickSorters);
+        sort(xxlRnd, quickSorters);
 
         // Stupid sorting algorithms
         String[] dumbSorters = {"bogo"};
@@ -119,8 +129,8 @@ public class Sorting {
      * @return sorted array
      */
     private static int[] getSortedArray(int size) {
-        // Get a range of ints from 1..size
-        return IntStream.range(1, size + 1).toArray();
+        // Get a range of ints from 0..size - 1
+        return IntStream.range(0, size).toArray();
     }
 
     /**
@@ -130,7 +140,7 @@ public class Sorting {
      */
     private static int[] getReversedArray(int size) {
         // Get a range of ints from size..1
-        return IntStream.range(1, size + 1).map(i -> size - i + 1).toArray();
+        return IntStream.range(0, size).map(i -> size - i - 1).toArray();
     }
 
     /**
@@ -183,12 +193,12 @@ public class Sorting {
         int[] array = new int[size];
 
         // Calculate number of each distinct integer
-        int numOfEachInt = size / numDistinct;
+        int numOfEach = size / numDistinct;
 
         // For each distinct integer, fill the array with the correct amount
         for (int i = 0; i < numDistinct; i++) {
-            for (int j = 0; j < numOfEachInt; j++) {
-                array[i * numOfEachInt + j] = (i + 1) * numOfEachInt;
+            for (int j = 0; j < numOfEach; j++) {
+                array[i * numOfEach + j] = (i + 1) * numOfEach;
             }
         }
 

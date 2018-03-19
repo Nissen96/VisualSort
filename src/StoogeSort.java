@@ -27,7 +27,6 @@ public class StoogeSort extends VisualSort {
         // If the first element is larger than the last, swap them
         if (A[start] > A[end]) {
             swap(A, start, end);
-            visualize(A);
         }
 
         // If there are 3 or more elements

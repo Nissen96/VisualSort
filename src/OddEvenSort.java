@@ -23,7 +23,6 @@ public class OddEvenSort extends VisualSort {
                 if (A[i] > A[i + 1]) {
                     swap(A, i, i + 1);
                     sorted = false;
-                    visualize(A);
                 }
             }
 
@@ -32,7 +31,6 @@ public class OddEvenSort extends VisualSort {
                 if (A[i] > A[i + 1]) {
                     swap(A, i, i + 1);
                     sorted = false;
-                    visualize(A);
                 }
             }
         }

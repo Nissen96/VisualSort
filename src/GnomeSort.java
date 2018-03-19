@@ -19,12 +19,10 @@ public class GnomeSort extends VisualSort {
             // Also if the index is at the first element
             if (idx == 0 || A[idx] >= A[idx -1]) {
                 idx++;
-                visualize(A);
             // If the elements are out of order, swap them and go a step back
             } else {
                 swap(A, idx, idx - 1);
                 idx--;
-                visualize(A);
             }
         }
     }

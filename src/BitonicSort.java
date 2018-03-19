@@ -34,7 +34,6 @@ public class BitonicSort extends VisualSort {
     {
         if (asc == (A[i]>A[j])) {
             swap(A, i, j);
-            visualize(A);
         }
     }
 

@@ -27,7 +27,6 @@ public class CocktailSort extends VisualSort {
                 if (A[i] > A[i + 1]) {
                     swap(A, i, i + 1);
                     newEndIdx = i;
-                    visualize(A);
                 }
             }
 
@@ -39,7 +38,6 @@ public class CocktailSort extends VisualSort {
                 if (A[i] > A[i + 1]) {
                     swap(A, i, i + 1);
                     newStartIdx = i;
-                    visualize(A);
                 }
             }
 

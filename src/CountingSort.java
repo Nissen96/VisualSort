@@ -24,6 +24,7 @@ public class CountingSort extends VisualSort {
         int[] C = new int[k + 1];
 
         // Let C[i] contain the number of elements equal to i
+        C[0]--;
         for (int i = 0; i < A.length; i++) {
             C[A[i]] += 1;
             // This visualization simply shows the iteration
@@ -43,7 +44,7 @@ public class CountingSort extends VisualSort {
         int value;
         for (int i = B.length - 1; i >= 0; i--) {
             value = B[i];
-            A[C[value] - 1] = value;
+            A[C[value]] = value;
             C[value]--;
 
             visualize(A);

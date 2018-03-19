@@ -63,7 +63,6 @@ public class PancakeSort extends VisualSort {
         // Swap each outer elements and move inwards
         while (start < i) {
             swap(A, start, i);
-            visualize(A);
             start++;
             i--;
         }

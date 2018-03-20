@@ -18,7 +18,7 @@ public class BubbleSort extends VisualSort {
 
             // Compare each pair of adjacent elements
             // Swap them if they are out of order
-            for (int j = 0; j < length - i - 1; j++) {
+            for (int j = 0, k = length - i - 1; j < k; j++) {
                 if (A[j] > A[j + 1]) {
                     Util.swap(A, j, j + 1);
                     visualize(A);

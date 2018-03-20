@@ -46,13 +46,16 @@ public class SleepSort extends VisualSort {
                     Thread.sleep(num * delay);
 
                     // When waking up, find out what index we're currently at and add the number
+                    int curIdx;
                     synchronized (A) {
-                        A[A.length - (int) curNum.getCount()] = num;
+                        curIdx = A.length - (int)curNum.getCount();
+                        A[curIdx] = num;
 
                         // Count down to next index for next thread
                         curNum.countDown();
+
+                        visualize(A, curIdx);
                     }
-                    visualize(A);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -221,7 +221,7 @@ abstract public class VisualSort extends JFrame {
         // animation with the brightness representing the magnitude of the value.
         for (int i = 0 ; i < numElements; i++ ) {
             if (i == currentIndex) {
-                g.setColor(Color.BLACK);
+                g.setColor(Color.RED);
             } else {
                 //float[] tile = imgArray[currentArray[i]];
                 //g.setColor(Color.getHSBColor(tile[0], tile[1], tile[2]));

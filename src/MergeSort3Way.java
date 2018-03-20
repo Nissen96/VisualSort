@@ -16,8 +16,8 @@ public class MergeSort3Way extends MergeSort {
      * Sort array with the 3-Way Merge Sort algorithm
      * Like regular Merge Sort but the array is split in 3 on each pass
      * @param A - Array to sort
-     * @param low - The start index of the current array part
-     * @param high - The end index of the current array part
+     * @param low - The start index of the current subarray
+     * @param high - The end index of the current subarray
      */
     private void mergeSort3Way(int[] A, int low, int high) {
         // Arrays of size 1 are trivially sorted
@@ -42,10 +42,10 @@ public class MergeSort3Way extends MergeSort {
     /**
      * Merge three array parts in sorted order
      * @param A - Array to merge in
-     * @param low - Start index of the current array part
-     * @param mid1 - First middle index of the current array part
-     * @param mid2 - Second middle index of the current array part
-     * @param high - End index of the current array part
+     * @param low - Start index of the current subarray
+     * @param mid1 - First middle index of the current subarray
+     * @param mid2 - Second middle index of the current subarray
+     * @param high - End index of the current subarray
      */
     private void merge3Way(int[] A, int low, int mid1, int mid2, int high) {
         // Create copy of A to merge from

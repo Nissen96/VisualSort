@@ -8,9 +8,9 @@ abstract class MergeSort extends VisualSort {
     /**
      * Merge two sorted parts of an array into one
      * @param A - The array to merge from and to
-     * @param low - The index of the first element of the left part of the array
-     * @param mid - The split point between the array parts to merge
-     * @param hi - The index of the last element of the right part of the array
+     * @param low - The start index of the left subarray
+     * @param mid - The split point between the subarrays to merge
+     * @param hi - The end index of the right subarray
      */
     void merge(int[] A, int low, int mid, int hi) {
         // Get size of left and right sublist

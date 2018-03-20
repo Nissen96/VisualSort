@@ -10,6 +10,7 @@ public class QuickSort extends VisualSort {
      * @param A - The array to sort
      */
     public void doSort(int[] A) {
+        // Call Quick Sort on entire array
         quickSort(A, 0, A.length - 1);
     }
 
@@ -18,8 +19,8 @@ public class QuickSort extends VisualSort {
      * A partition element is chosen and the array is partitioned
      * The subparts are recursively sorted
      * @param A - The array to sort
-     * @param p - The index of the first element of the left part of the array
-     * @param r - The index of the last element of the right part of the array
+     * @param p - The start index of the current subarray
+     * @param r - The end index of the current subarray
      */
     private void quickSort(int[] A, int p, int r) {
         // Stop when array is sorted
@@ -39,8 +40,8 @@ public class QuickSort extends VisualSort {
      * The left half contains each element smaller than the partition and the right each larger
      * The partition element is inserted in the middle
      * @param A - The array to sort
-     * @param p - The index of the first element of the left part of the array to partition
-     * @param r - The index of the last element of the right part of the array to partition
+     * @param p - The start index of the current subarray to partition
+     * @param r - The end index of the current subarray to partition
      * @return the index of the partition element
      */
     private int partition(int[] A, int p, int r) {

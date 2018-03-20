@@ -70,13 +70,54 @@ public class Util {
      * @return the largest value in the array
      */
     static int getMax(int[] array) {
-        // Initialize the largest value to the first
+        // Get min and max from array and return max
+        return getMinMax(array).getMax();
+    }
+
+    /**
+     * Get the smallest value in an array
+     * @param array - The array to search
+     * @return the smallest value in the array
+     */
+    static int getMin(int[] array) {
+        // Get min and max from array and return min
+        return getMinMax(array).getMin();
+    }
+
+    static MinMax getMinMax(int[] array) {
+        // Initialize min and max as the first value
+        int min = array[0];
         int max = array[0];
 
-        // Update max if any larger value is found
-        for (int i : array) {
-            if (i > max) max = i;
+        // Update min and max until smallest and largest values are found
+        for (int val : array) {
+            if (val < min) min = val;
+            if (val > max) max = val;
         }
+
+        // Return min and max
+        return new MinMax(min, max);
+    }
+
+}
+
+/**
+ * Class for storing minimum and maximum values from an array
+ */
+class MinMax {
+    private int min;
+    private int max;
+
+    MinMax(int min, int max) {
+        this.min = min;
+        this.max = max;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
         return max;
     }
 }

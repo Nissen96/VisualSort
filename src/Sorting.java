@@ -56,6 +56,7 @@ public class Sorting {
 
         // Medium sorting algorithms
         String[] mediumSorters = {
+            "pigeon",
             "comb"
         };
         sort(xlRnd, mediumSorters, 1);
@@ -288,6 +289,12 @@ public class Sorting {
             case "pancake":
             case "pnc":
                 sorter = new PancakeSort();
+                break;
+            case "pigeonhole":
+            case "pigeon":
+            case "pnh":
+            case "pgn":
+                sorter = new PigeonholeSort();
                 break;
             case "quick":
             case "qck":

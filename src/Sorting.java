@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
@@ -8,8 +9,6 @@ import java.util.stream.IntStream;
  */
 public class Sorting {
     public static void main(String[] args) throws InterruptedException {
-
-
         // Reverse sorted arrays
         int[] xxsRvs = getReversedArray(16);
         int[] xsRvs = getReversedArray(64);
@@ -132,8 +131,19 @@ public class Sorting {
      * @return sorted array
      */
     private static int[] getSortedArray(int size) {
-        // Get a range of ints from 0..size - 1
+        // Get a range of ints from 1..size
         return IntStream.range(1, size + 1).toArray();
+    }
+
+    /**
+     * Get a sorted array of integers in a given range
+     * @param size - Number of elements in array
+     * @param offset - Integer to start from
+     * @return sorted array
+     */
+    private static int[] getSortedArray(int size, int offset) {
+        // Get a range of ints from offset...offset + size
+        return IntStream.range(offset, offset + size + 1).toArray();
     }
 
     /**
@@ -143,7 +153,17 @@ public class Sorting {
      */
     private static int[] getReversedArray(int size) {
         // Get a range of ints from size..1
-        return IntStream.range(1, size + 1).map(i -> size - i - 1).toArray();
+        return IntStream.range(1, size + 1).map(i -> size + 1 - i).toArray();
+    }
+
+    /**
+     * Get an array of integers in a given range in reverse order
+     * @param size - Number of elements in array
+     * @param offset - Integer to end on
+     * @return array sorted in reverse order
+     */
+    private static int[] getReversedArray(int size, int offset) {
+        return IntStream.range(1, size + 1).map(i -> offset + size - i).toArray();
     }
 
     /**
@@ -154,6 +174,18 @@ public class Sorting {
     private static int[] getRandomArray(int size) {
         // Get a sorted array and randomize it
         int[] array = getSortedArray(size);
+        return randomize(array);
+    }
+
+    /**
+     * Get an array of integers in a given range in random order
+     * @param size - Number of elements in array
+     * @param offset - Integer to start from
+     * @return array in random order
+     */
+    private static int[] getRandomArray(int size, int offset) {
+        // Get a sorted array starting from a given integer and randomize it
+        int[] array = getSortedArray(size, offset);
         return randomize(array);
     }
 

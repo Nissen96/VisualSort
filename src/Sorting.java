@@ -40,28 +40,25 @@ public class Sorting {
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
-            //"insertion",
-            //"bubble",
-            //"selection",
-            //"cocktail",
-            //"gnome",
-            //"bead",
-            //"cycle",
-            //"slow",
-            //"stooge",
-            //"pancake",
-            //"oddeven"
+            "insertion",
+            "bubble",
+            "selection",
+            "cocktail",
+            "gnome",
+            "bead",
+            "cycle",
+            "slow",
+            "stooge",
+            "pancake",
+            "oddeven"
         };
         sort(mRnd, slowSorters);
 
         // Medium sorting algorithms
         String[] mediumSorters = {
-            "sleep",
-            "strand",
-            "pigeon",
-            "comb"
+            // "strand"
         };
-        sort(lRnd, mediumSorters, 1);
+        sort(lRvs, mediumSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {
@@ -69,6 +66,7 @@ public class Sorting {
             "heap",
             "mergetd",
             "mergebu",
+            "merge3w",
             "count",
             "radixlsd2",
             "radixlsd4",
@@ -76,9 +74,13 @@ public class Sorting {
             "shell",
             "shelltokuda",
             "shellciura",
-            "bitonic"
+            "bitonic",
+            "sleep",
+            "pigeon",
+            "comb",
+            "tim"
         };
-        sort(xxlRnd, quickSorters);
+        sort(xlRnd, quickSorters);
 
         // Stupid sorting algorithms
         String[] dumbSorters = {"bogo"};
@@ -131,7 +133,7 @@ public class Sorting {
      */
     private static int[] getSortedArray(int size) {
         // Get a range of ints from 0..size - 1
-        return IntStream.range(0, size).toArray();
+        return IntStream.range(1, size + 1).toArray();
     }
 
     /**
@@ -141,7 +143,7 @@ public class Sorting {
      */
     private static int[] getReversedArray(int size) {
         // Get a range of ints from size..1
-        return IntStream.range(0, size).map(i -> size - i - 1).toArray();
+        return IntStream.range(1, size + 1).map(i -> size - i - 1).toArray();
     }
 
     /**
@@ -271,6 +273,11 @@ public class Sorting {
             case "ins":
                 sorter = new InsertionSort();
                 break;
+            case "merge3way":
+            case "merge3w":
+            case "m3w":
+                sorter = new MergeSort3Way();
+                break;
             case "mergebu":
             case "mergebottomup":
             case "mbu":
@@ -358,6 +365,9 @@ public class Sorting {
             case "strand":
             case "stn":
                 sorter = new StrandSort();
+                break;
+            case "tim":
+                sorter = new TimSort();
                 break;
             default:
                 sorter = new NoSort();

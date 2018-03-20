@@ -56,10 +56,12 @@ public class Sorting {
 
         // Medium sorting algorithms
         String[] mediumSorters = {
+            "sleep",
+            "strand",
             "pigeon",
             "comb"
         };
-        sort(xlRnd, mediumSorters, 1);
+        sort(lRnd, mediumSorters, 1);
 
         // Quick sorting algorithms
         String[] quickSorters = {
@@ -341,6 +343,10 @@ public class Sorting {
             case "shlt":
                 sorter = new ShellSortTokuda();
                 break;
+            case "sleep":
+            case "slp":
+                sorter = new SleepSort();
+                break;
             case "slow":
             case "slw":
                 sorter = new SlowSort();
@@ -349,8 +355,13 @@ public class Sorting {
             case "stg":
                 sorter = new StoogeSort();
                 break;
+            case "strand":
+            case "stn":
+                sorter = new StrandSort();
+                break;
             default:
                 sorter = new NoSort();
+                break;
         }
 
         return sorter;

@@ -12,7 +12,7 @@ abstract class RadixSortLSD extends RadixSort {
      */
     void doSort(int[] A) {
         int b = getBase();
-        int k = getMax(A);
+        int k = Util.getMax(A);
 
         // Compute the number of digits needed to represent k in base b
         int digits = (int) (Math.log(k) / Math.log(b) + 1);

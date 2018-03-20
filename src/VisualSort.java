@@ -182,8 +182,8 @@ abstract public class VisualSort extends JFrame {
 
         // Calculate size of each coloured square
         int numElements = currentArray.length;
-        int squareWidth = (width - 100) / numElements;
-        int squareHeight = (height - 100) / numElements;
+        int squareWidth = (width - 200) / numElements;
+        int squareHeight = (height - 200) / numElements;
         int colHeight;
 
         // Go to each index in the array, and fill a bar

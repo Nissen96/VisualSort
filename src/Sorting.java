@@ -1,8 +1,3 @@
-import java.util.Arrays;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.IntStream;
-
 /**
  * Visualizing sorting algorithms.
  * @author Alexander F. Nissen (alnis17@student.dk)
@@ -10,31 +5,31 @@ import java.util.stream.IntStream;
 public class Sorting {
     public static void main(String[] args) throws InterruptedException {
         // Reverse sorted arrays
-        int[] xxsRvs = getReversedArray(16);
-        int[] xsRvs = getReversedArray(64);
-        int[] sRvs = getReversedArray(144);
-        int[] mRvs = getReversedArray(256);
-        int[] lRvs = getReversedArray(625);
-        int[] xlRvs = getReversedArray(1024);
-        int[] xxlRvs = getReversedArray(4096);
+        int[] xxsRvs = Util.getReversedRange(16);
+        int[] xsRvs = Util.getReversedRange(64);
+        int[] sRvs = Util.getReversedRange(144);
+        int[] mRvs = Util.getReversedRange(256);
+        int[] lRvs = Util.getReversedRange(625);
+        int[] xlRvs = Util.getReversedRange(1024);
+        int[] xxlRvs = Util.getReversedRange(4096);
 
         // Duplicates arrays
-        int[] xxsDpl = getDuplicatesArray(16, 8);
-        int[] xsDpl = getDuplicatesArray(64, 8);
-        int[] sDpl = getDuplicatesArray(144, 8);
-        int[] mDpl = getDuplicatesArray(256, 8);
-        int[] lDpl = getDuplicatesArray(625, 5);
-        int[] xlDpl = getDuplicatesArray(1024, 8);
-        int[] xxlDpl = getDuplicatesArray(4096, 8);
+        int[] xxsDpl = Util.getDuplicatesArray(16, 8);
+        int[] xsDpl = Util.getDuplicatesArray(64, 8);
+        int[] sDpl = Util.getDuplicatesArray(144, 8);
+        int[] mDpl = Util.getDuplicatesArray(256, 8);
+        int[] lDpl = Util.getDuplicatesArray(625, 5);
+        int[] xlDpl = Util.getDuplicatesArray(1024, 8);
+        int[] xxlDpl = Util.getDuplicatesArray(4096, 8);
 
         // Random arrays
-        int[] xxsRnd = getRandomArray(16);
-        int[] xsRnd = getRandomArray(64);
-        int[] sRnd = getRandomArray(144);
-        int[] mRnd = getRandomArray(256);
-        int[] lRnd = getRandomArray(625);
-        int[] xlRnd = getRandomArray(1024);
-        int[] xxlRnd = getRandomArray(4096);
+        int[] xxsRnd = Util.getRandomRange(16);
+        int[] xsRnd = Util.getRandomRange(64);
+        int[] sRnd = Util.getRandomRange(144);
+        int[] mRnd = Util.getRandomRange(256);
+        int[] lRnd = Util.getRandomRange(625);
+        int[] xlRnd = Util.getRandomRange(1024);
+        int[] xxlRnd = Util.getRandomRange(4096);
 
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
@@ -86,13 +81,14 @@ public class Sorting {
             "sleep",
             "tim"
         };
-        sort(xlRnd, quickSorters);
+        //sort(xlRnd, quickSorters);
 
         // Stupid sorting algorithms
         String[] dumbSorters = {
+            "random",
             "bogo"
         };
-        sort(xsRvs, dumbSorters, 0);
+        sort(xxsRnd, dumbSorters, 0);
     }
 
     /**
@@ -132,121 +128,6 @@ public class Sorting {
         for (String sorterTitle : sorters) {
             sort(array, sorterTitle, delay);
         }
-    }
-
-    /**
-     * Get an already sorted array of integers
-     * @param size - Number of elements in array
-     * @return sorted array
-     */
-    private static int[] getSortedArray(int size) {
-        // Get a range of ints from 1..size
-        return IntStream.range(1, size + 1).toArray();
-    }
-
-    /**
-     * Get a sorted array of integers in a given range
-     * @param size - Number of elements in array
-     * @param offset - Integer to start from
-     * @return sorted array
-     */
-    private static int[] getSortedArray(int size, int offset) {
-        // Get a range of ints from offset...offset + size
-        return IntStream.range(offset, offset + size + 1).toArray();
-    }
-
-    /**
-     * Get an array of integers in reverse order
-     * @param size - Number of elements in array
-     * @return array sorted in reverse order
-     */
-    private static int[] getReversedArray(int size) {
-        // Get a range of ints from size..1
-        return IntStream.range(1, size + 1).map(i -> size + 1 - i).toArray();
-    }
-
-    /**
-     * Get an array of integers in a given range in reverse order
-     * @param size - Number of elements in array
-     * @param offset - Integer to end on
-     * @return array sorted in reverse order
-     */
-    private static int[] getReversedArray(int size, int offset) {
-        return IntStream.range(1, size + 1).map(i -> offset + size - i).toArray();
-    }
-
-    /**
-     * Get an array of integers in random order
-     * @param size - Number of elements in array
-     * @return array in random order
-     */
-    private static int[] getRandomArray(int size) {
-        // Get a sorted array and randomize it
-        int[] array = getSortedArray(size);
-        return randomize(array);
-    }
-
-    /**
-     * Get an array of integers in a given range in random order
-     * @param size - Number of elements in array
-     * @param offset - Integer to start from
-     * @return array in random order
-     */
-    private static int[] getRandomArray(int size, int offset) {
-        // Get a sorted array starting from a given integer and randomize it
-        int[] array = getSortedArray(size, offset);
-        return randomize(array);
-    }
-
-    /**
-     * Randomize an array
-     * @param array - The array to randomize
-     * @return the array with elements in random order
-     */
-    private static int[] randomize(int[] array) {
-        Random rnd = ThreadLocalRandom.current();
-
-        int idx, tmp;
-        // Iterate over array from the top and down
-        for (int i = array.length - 1; i > 0; i--) {
-            // Pick a random index to swap the current with
-            idx = rnd.nextInt(i + 1);
-
-            // Swap element at index idx and i
-            tmp = array[idx];
-            array[idx] = array[i];
-            array[i] = tmp;
-        }
-
-        return array;
-    }
-
-    /**
-     * Get a random array of integers with evenly spaced duplicates
-     * @param size - The number of elements in array
-     * @param numDistinct - The number of distinct elements
-     * @return sorted array with duplicates
-     */
-    private static int[] getDuplicatesArray(int size, int numDistinct) {
-        // Return if size isn't divisible by the number of distinct elements
-        if (size % numDistinct != 0) {
-            return new int[size];
-        }
-
-        // Initialize new array
-        int[] array = new int[size];
-
-        // Calculate number of each distinct integer
-        int numOfEach = size / numDistinct;
-
-        // For each distinct integer, fill the array with the correct amount
-        for (int i = 0; i < numDistinct; i++) {
-            for (int j = 0; j < numOfEach; j++) {
-                array[i * numOfEach + j] = (i + 1) * numOfEach;
-            }
-        }
-
-        return randomize(array);
     }
 
     /**
@@ -396,6 +277,10 @@ public class Sorting {
             case "radixmsd10":
             case "rdxmsd10":
                 sorter = new RadixSortMSD10();
+                break;
+            case "random":
+            case "rnd":
+                sorter = new RandomSort();
                 break;
             case "selection":
             case "slc":

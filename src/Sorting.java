@@ -67,6 +67,7 @@ public class Sorting {
             "comb",
             "count",
             "heap",
+            "intro",
             "mergetd",
             "mergebu",
             "merge3w",
@@ -313,6 +314,10 @@ public class Sorting {
             case "heap":
             case "hp":
                 sorter = new HeapSort();
+                break;
+            case "intro":
+            case "int":
+                sorter = new IntroSort();
                 break;
             case "insertion":
             case "ins":

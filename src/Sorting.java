@@ -62,7 +62,7 @@ public class Sorting {
 
         // Quick sorting algorithms
         String[] quickSorters = {
-            "bitonic",
+            //"bitonic",
             "bucket",
             "comb",
             "count",

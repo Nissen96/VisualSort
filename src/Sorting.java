@@ -51,17 +51,18 @@ public class Sorting {
             "pancake",
             "oddeven"
         };
-        sort(mRnd, slowSorters);
+        //sort(mRnd, slowSorters);
 
         // Medium sorting algorithms
         String[] mediumSorters = {
-            // "strand"
+            //"strand"
         };
-        sort(lRvs, mediumSorters);
+        sort(lRnd, mediumSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {
             "quick",
+            "quick3w",
             "heap",
             "mergetd",
             "mergebu",
@@ -340,6 +341,11 @@ public class Sorting {
             case "quick":
             case "qck":
                 sorter = new QuickSort();
+                break;
+            case "quick3way":
+            case "quick3w":
+            case "q3w":
+                sorter = new QuickSort3Way();
                 break;
             case "radix":
             case "rdx":

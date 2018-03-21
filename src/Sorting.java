@@ -62,8 +62,7 @@ public class Sorting {
 
         // Quick sorting algorithms
         String[] quickSorters = {
-            "radixmsd10",
-            "radixmsd2",
+            "smooth",
             "bitonic",
             "bucket",
             "comb",
@@ -79,6 +78,8 @@ public class Sorting {
             "radixlsd2",
             "radixlsd4",
             "radixlsd10",
+            "radixmsd2",
+            "radixmsd10",
             "shell",
             "shelltokuda",
             "shellciura",
@@ -422,6 +423,10 @@ public class Sorting {
             case "slow":
             case "slw":
                 sorter = new SlowSort();
+                break;
+            case "smooth":
+            case "smt":
+                sorter = new SmoothSort();
                 break;
             case "stooge":
             case "stg":

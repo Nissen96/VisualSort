@@ -58,11 +58,13 @@ public class Sorting {
         String[] mediumSorters = {
             "strand"
         };
-        sort(lRnd, mediumSorters);
+        //sort(lRnd, mediumSorters);
 
         // Quick sorting algorithms
         String[] quickSorters = {
-            //"bitonic",
+            "radixmsd10",
+            "radixmsd2",
+            "bitonic",
             "bucket",
             "comb",
             "count",
@@ -385,6 +387,14 @@ public class Sorting {
             case "rdx10":
             case "rdxlsd10":
                 sorter = new RadixSortLSD10();
+                break;
+            case "radixmsd2":
+            case "rdxmsd2":
+                sorter = new RadixSortMSD2();
+                break;
+            case "radixmsd10":
+            case "rdxmsd10":
+                sorter = new RadixSortMSD10();
                 break;
             case "selection":
             case "slc":

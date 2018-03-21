@@ -39,17 +39,18 @@ public class Sorting {
         // Slow sorting algorithms
         // Bead Sort is very fast, but the visualization is very slow
         String[] slowSorters = {
-            "insertion",
-            "bubble",
-            "selection",
-            "cocktail",
-            "gnome",
             "bead",
+            "bubble",
+            "cocktail",
             "cycle",
+            "exchange",
+            "gnome",
+            "insertion",
+            "oddeven",
+            "pancake",
+            "selection",
             "slow",
             "stooge",
-            "pancake",
-            "oddeven"
         };
         //sort(mRnd, slowSorters);
 
@@ -61,29 +62,32 @@ public class Sorting {
 
         // Quick sorting algorithms
         String[] quickSorters = {
-            "quick",
-            "quick3w",
+            "bitonic",
+            "bucket",
+            "comb",
+            "count",
             "heap",
             "mergetd",
             "mergebu",
             "merge3w",
-            "count",
+            "pigeon",
+            "quick",
+            "quick3w",
             "radixlsd2",
             "radixlsd4",
             "radixlsd10",
             "shell",
             "shelltokuda",
             "shellciura",
-            "bitonic",
             "sleep",
-            "pigeon",
-            "comb",
             "tim"
         };
         sort(xlRnd, quickSorters);
 
         // Stupid sorting algorithms
-        String[] dumbSorters = {"bogo"};
+        String[] dumbSorters = {
+            "bogo"
+        };
         sort(xsRvs, dumbSorters, 0);
     }
 
@@ -276,6 +280,10 @@ public class Sorting {
             case "bbl":
                 sorter = new BubbleSort();
                 break;
+            case "bucket":
+            case "bkt":
+                sorter = new BucketSort();
+                break;
             case "cocktail":
             case "cocktailshaker":
             case "ctl":
@@ -293,6 +301,10 @@ public class Sorting {
             case "cycle":
             case "ccl":
                 sorter = new CycleSort();
+                break;
+            case "exchange":
+            case "exc":
+                sorter = new ExchangeSort();
                 break;
             case "gnome":
             case "gnm":

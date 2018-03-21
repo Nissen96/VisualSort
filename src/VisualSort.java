@@ -8,9 +8,6 @@ abstract public class VisualSort extends JFrame {
     // Current state of array to draw
     private int[] currentArray;
 
-    //private float[][] imgArray;
-    //private BufferedImage img;
-
     // Drawing options
     private int width;
     private int height;
@@ -18,10 +15,6 @@ abstract public class VisualSort extends JFrame {
     private float saturation;
     private int delay;
     private int currentIndex;
-    private int buffer;
-    private int frame;
-
-    //private TonePlayer tonePlayer;
 
     /**
      * Construct the JFrame for the sorting animation.
@@ -39,32 +32,7 @@ abstract public class VisualSort extends JFrame {
         this.saturation = (float) Math.random();
         this.delay = 1;
         this.currentIndex = -1;
-        this.buffer = 1;
-        this.frame = 0;
 
-        //this.tonePlayer = new TonePlayer();
-
-        /*
-        try {
-            img = ImageIO.read(new File("img/Mona_Lisa.jpg"));
-        } catch (IOException e) {e.printStackTrace();}
-
-        int size = 64;
-        this.imgArray = new float[size * size][3];
-        int i = 0;
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
-                int rgb = img.getRGB(x, y);
-                float[] hsb = new float[3];
-                int r = (rgb >> 16) & 0xFF;
-                int g = (rgb >> 8) & 0xFF;
-                int b = (rgb) & 0xFF;
-                Color.RGBtoHSB(r, g, b, hsb);
-                imgArray[i] = hsb;
-                i++;
-            }
-        }
-        */
         // Create window
         setSize(width, height);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -80,10 +48,6 @@ abstract public class VisualSort extends JFrame {
      */
     public void setDelay(int delay) {
         this.delay = delay;
-    }
-
-    public void setBuffer(int buffer) {
-        this.buffer = buffer;
     }
 
     /**
@@ -148,19 +112,15 @@ abstract public class VisualSort extends JFrame {
      * @param curIdx - Index of the element to display a black bar at
      */
     void visualize(int[] array, int curIdx) {
-        frame++;
-        if (frame % buffer == 0) {
-            // Call paint() with the input options
-            this.currentArray = array;
-            this.currentIndex = curIdx;
-            repaint();
+        // Call paint() with the input options
+        this.currentArray = array;
+        this.currentIndex = curIdx;
+        repaint();
 
-            // Optional delay
-            try {
-                Thread.sleep(delay, 0);
-            } catch (InterruptedException e) {
-            }
-        }
+        // Optional delay
+        try {
+            Thread.sleep(delay, 0);
+        } catch (InterruptedException e) {}
     }
 
     /**
@@ -170,6 +130,10 @@ abstract public class VisualSort extends JFrame {
      */
     void visualize(int[] array) {
         visualize(array, -1);
+    }
+
+    void clear() {
+        visualize(new int[1]);
     }
 
     /**
@@ -203,7 +167,7 @@ abstract public class VisualSort extends JFrame {
             if (i == currentIndex) {
                 g.setColor(Color.RED);
             } else {
-                //g.setColor(Color.BLACK);
+                //g.setColor(Color.BLACK); // For all black bars
                 g.setColor(Color.getHSBColor(hue, saturation, currentArray[i] / (float) numElements));
             }
             g.fillRect(100 + i * squareWidth, height - 100 - colHeight, squareWidth, colHeight);
@@ -223,8 +187,6 @@ abstract public class VisualSort extends JFrame {
             if (i == currentIndex) {
                 g.setColor(Color.RED);
             } else {
-                //float[] tile = imgArray[currentArray[i]];
-                //g.setColor(Color.getHSBColor(tile[0], tile[1], tile[2]));
                 g.setColor(Color.getHSBColor(hue, saturation, currentArray[i] / (float) numElements));
             }
             g.fillRect(800 + (i % size) * scale, 100 + i / size * scale, scale, scale);

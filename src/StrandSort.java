@@ -10,13 +10,12 @@ public class StrandSort extends VisualSort {
     public void doSort(int[] A) {
         LinkedList<Integer> ll = new LinkedList<>();
         for (int val : A) ll.add(val);
-        strandSort(ll);
+        strandSort(A, ll);
     }
 
-    private void strandSort(LinkedList<Integer> list){
+    private void strandSort(int[] A, LinkedList<Integer> list){
         if(list.isEmpty())
             return;
-
 
         LinkedList<Integer> result = new LinkedList<>();
         while (list.size() > 0){
@@ -30,11 +29,10 @@ public class StrandSort extends VisualSort {
                 }
             }
             result = merge(sorted, result);
-            int[] rs = new int[result.size()];
             for (int i = 0; i < result.size(); i++) {
-                rs[i] = result.get(i);
+                A[i] = result.get(i);
+                visualize(A);
             }
-            visualize(rs);
         }
         for (Integer i : result) System.out.println(i);
     }
@@ -42,12 +40,13 @@ public class StrandSort extends VisualSort {
     private static LinkedList<Integer> merge(LinkedList<Integer> left, LinkedList<Integer> right){
         LinkedList<Integer> result = new LinkedList<>();
         while(!left.isEmpty() && !right.isEmpty()){
-            //change the direction of this comparison to change the direction of the sort
+            // change the direction of this comparison to change the direction of the sort
             if(left.peek().compareTo(right.peek()) <= 0)
                 result.add(left.remove());
             else
                 result.add(right.remove());
         }
+
         result.addAll(left);
         result.addAll(right);
         return result;

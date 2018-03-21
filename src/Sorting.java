@@ -56,7 +56,7 @@ public class Sorting {
 
         // Medium sorting algorithms
         String[] mediumSorters = {
-            //"strand"
+            "strand"
         };
         sort(lRnd, mediumSorters);
 

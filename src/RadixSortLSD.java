@@ -4,9 +4,9 @@ abstract class RadixSortLSD extends RadixSort {
     }
 
     /**
-     * Sort array with the Radix Sort algorithm
+     * Sort array with the Radix Sort (LSD) algorithm
      * Radix Sort sorts the array by sorting on each digit separately
-     * The numbers are sorted from least significant digit and up
+     * Radix Sort (LSD) sorts from least significant digit and up
      * It uses Counting Sort as a subroutine
      * @param A - The array to sort
      */
